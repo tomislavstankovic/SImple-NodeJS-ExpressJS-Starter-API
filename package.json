@@ -1,13 +1,13 @@
 {
-  "name": "KorisniciAPI",
+  "name": "UsersAPI",
   "version": "1.0.0",
-  "description": "Primjer izrade jednostavnog Node.js i Express.js RESTful API-ja",
+  "description": "An example of a simple Node.js and Express.js RESTful API",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Tomislav Stankovi�",
+  "author": "Tomislav Stankovic",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
