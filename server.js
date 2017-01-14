@@ -7,14 +7,15 @@ var bodyParser = require('body-parser');  // poziva bodyParser iz node_modules
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;        // definira port na kojemu će API raditi
+ // definira port na kojemu će API raditi
+var port = process.env.PORT || 8080;       
 
 // Spajanje s MySQL bazom
  var pool = mysql.createPool({
         host: 'localhost',
-        user: 'root',
+        user: '',
         password: '',
-        database: 'korisniciapi'
+        database: ''
     }); 
 
 // definiranje zadane (defaultne) rute za naš API
@@ -29,7 +30,8 @@ apiRoutes.use(function(req, res, next) {
 
 // testiranje rute (GET http://localhost:8080/api)
 apiRoutes.get('/', function(req, res) {
-    res.json({ message: 'API radi!' });   //ako je sve ispravno postavljeno kao odgovor ćemo dobiti ovu poruku
+    //ako je sve ispravno postavljeno kao odgovor ćemo dobiti ovu poruku
+    res.json({ message: 'API radi!' });   
 });
 
 //Dodavanje korisnika
@@ -51,7 +53,7 @@ apiRoutes.post('/dodajkorisnika', function (req, res, next) {
                 if (err) {
                     throw err;
                 } else {
-					res.json("Uspješno dodan korisnik!");
+	            res.json("Uspješno dodan korisnik!");
                     res.end();
                 }
                 connection.release();
@@ -70,7 +72,7 @@ pool.getConnection(function(err, connection) {
 
        var query = "SELECT * FROM korisnik ORDER BY k_id ASC";
        
-        var table = ["korisniciapi"];
+       var table = ["korisniciapi"];
         
         query = mysql.format(query,table);
 
@@ -96,7 +98,7 @@ pool.getConnection(function(err, connection) {
         if (err) {
             console.error("Dogodila se greška: " + err);
         }
-
+	
            var korisnik = { 
             k_ime: req.body.ime,
             k_prezime: req.body.prezime
@@ -148,8 +150,6 @@ pool.getConnection(function(err, connection) {
             });
     });
 });
-
-// ostale GET, POST, PUT, DELETE biti će definirane ovdje
 
 // sve rute sadržavati će /api
 app.use('/api', apiRoutes);
