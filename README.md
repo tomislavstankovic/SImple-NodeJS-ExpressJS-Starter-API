@@ -1,5 +1,5 @@
 # SImple-NodeJS-ExpressJS-Starter-API
-Simple Node.js and Express.js Starter Server API
+Simple Node.js and Express.js Starter Server API with the ability to upload and delete files from HDD.
 
 API (POST, GET, PUT, DELETE) connected with a MySQL database. 
 
